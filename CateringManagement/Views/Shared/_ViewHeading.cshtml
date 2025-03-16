@@ -1,0 +1,27 @@
+﻿@{
+    string actionName = ViewData["ActionName"].ToString();
+    if (actionName == "Details" || actionName == "Index")
+    {
+        @:<h2>@ViewData["ControllerFriendlyName"] @actionName</h2>
+    }
+    else if (actionName == "Delete" || actionName == "Remove")
+    {
+        //Prepare the quesiton about deleting this record
+        //Assume we do not have a summary property
+        string summary = "this " + ViewData["ControllerFriendlyName"];
+        if (ViewData.ModelMetadata.Properties.FirstOrDefault(p => p.PropertyName == "Summary") != null)
+        {
+            // We DO, we DO have a Summary Property!
+            summary = Model.Summary.ToString();
+        }
+
+        @:<h2>@actionName @ViewData["ControllerFriendlyName"]</h2>
+        <p>
+            <h4>Are you sure you want to @actionName.ToLower() @(summary)?</h4>
+        </p>
+    }
+    else
+    {
+        @:<h2>@actionName @ViewData["ControllerFriendlyName"]</h2>
+    }
+}

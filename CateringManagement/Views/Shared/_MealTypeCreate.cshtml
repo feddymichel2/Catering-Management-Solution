@@ -1,0 +1,16 @@
+﻿@model CateringManagement.Models.MealType
+<form asp-controller="MealType" asp-action="Create" id="createMealTypeForm">
+    <div class="text-danger validation-summary-errors"><ul id="ErrorList"></ul></div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" id="submitMealTypeCreate" class="btn btn-outline-secondary" />
+            </div>
+        </div>
+    </div>
+</form>
